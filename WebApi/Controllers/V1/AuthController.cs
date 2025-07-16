@@ -1,5 +1,6 @@
 ﻿using Application.IRepositories.IAuthRepositories;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Webgostar.Framework.Presentation.Web.ControllerTools;
@@ -8,6 +9,7 @@ namespace WebApi.Controllers.V1
 {
     [ApiVersion("1.0")]
     [ApiExplorerSettings(GroupName = "Auth V1")]
+    [AllowAnonymous]
     public class AuthController(IAuthRepository authService) : ApiController
     {
         [HttpPost("register")]

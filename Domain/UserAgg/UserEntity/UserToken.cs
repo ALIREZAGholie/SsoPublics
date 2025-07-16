@@ -2,7 +2,7 @@
 
 namespace Domain.UserAgg.UserEntity
 {
-    public class User : IdentityUser<long>
+    public class UserToken : IdentityUserToken<long>
     {
 
     }

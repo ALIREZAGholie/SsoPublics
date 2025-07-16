@@ -1,8 +1,6 @@
-﻿using Application.IRepositories.ISystemErrorRepositories;
-using FluentValidation;
+﻿using FluentValidation;
 using Webgostar.Framework.Application.QueryCommandTools;
 using Webgostar.Framework.Base.BaseModels;
-using Webgostar.Framework.Base.IBaseServices;
 
 namespace Application.UseCases._SystemErrorCases
 {
@@ -21,18 +19,12 @@ namespace Application.UseCases._SystemErrorCases
         }
     }
 
-    public class SystemErrorAddHandler(ISystemErrorRepository errorRepository, IUnitOfWork unitOfWork) : ICommandHandler<SystemErrorAddCommand, bool>
+    public class SystemErrorAddHandler() : ICommandHandler<SystemErrorAddCommand, bool>
     {
         public async Task<OperationResult<bool>> Handle(SystemErrorAddCommand request, CancellationToken cancellationToken)
         {
             try
             {
-                var entity = new SystemError(request.Test);
-
-                await errorRepository.Add(entity, cancellationToken);
-
-                await unitOfWork.SaveChangesAsync(cancellationToken);
-
                 return OperationResult<bool>.Success(true);
             }
             catch (Exception)

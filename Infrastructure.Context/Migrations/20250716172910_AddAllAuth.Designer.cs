@@ -4,6 +4,7 @@ using Infrastructure.Context.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Context.Migrations
 {
     [DbContext(typeof(EfContext))]
-    partial class EfContextModelSnapshot : ModelSnapshot
+    [Migration("20250716172910_AddAllAuth")]
+    partial class AddAllAuth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace Infrastructure.Context.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("Role", (string)null);
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.RoleEntity.RoleClaim", b =>
@@ -73,7 +76,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClaim", (string)null);
+                    b.ToTable("RoleClaim");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserEntity.User", b =>
@@ -141,7 +144,7 @@ namespace Infrastructure.Context.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserEntity.UserClaim", b =>
@@ -165,7 +168,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserClaim", (string)null);
+                    b.ToTable("UserClaim");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserEntity.UserLogin", b =>
@@ -186,7 +189,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserLogin", (string)null);
+                    b.ToTable("UserLogin");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserEntity.UserToken", b =>
@@ -205,7 +208,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UserToken", (string)null);
+                    b.ToTable("UserToken");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserRoleEntity.UserRole", b =>
@@ -220,7 +223,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRole", (string)null);
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("Webgostar.Framework.Base.BaseModels.SystemError", b =>
@@ -275,7 +278,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SystemError", (string)null);
+                    b.ToTable("SystemError");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.RoleEntity.RoleClaim", b =>

@@ -31,7 +31,7 @@ namespace WebApi
                     ClientId = "postman-client",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedScopes = { "api.read", "api.write", "offline_access" },  // اضافه شد
+                    AllowedScopes = { "api.read", "api.write", "offline_access" },
                     AllowOfflineAccess = true
                 }
             };

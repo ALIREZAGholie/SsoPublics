@@ -14,10 +14,16 @@ namespace Infrastructure.Context
             services.AddApplication();
 
             services.AddDbContext<EfBaseContext, EfContext>(options =>
-            {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                    o => o.CommandTimeout(120));
-            });
+                    o => o.CommandTimeout(120)));
+
+            //services.AddDbContext<DbContext, EfBaseContext>(options =>
+            //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+            //        o => o.CommandTimeout(120)));
+
+            //services.AddDbContext<EfContext>(options =>
+            //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+            //        o => o.CommandTimeout(120)));
 
             return services;
         }

@@ -7,7 +7,7 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
     {
         public async Task<string> GetTokenAsync(string username, string password)
         {
-            var disco = await httpClient.GetDiscoveryDocumentAsync("https://localhost:5001"); // آدرس IdentityServer
+            var disco = await httpClient.GetDiscoveryDocumentAsync("https://localhost:44355"); // آدرس IdentityServer
 
             if (disco.IsError)
                 throw new Exception(disco.Error);

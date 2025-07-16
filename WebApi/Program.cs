@@ -1,6 +1,6 @@
 ﻿using Application.Queries._SystemErrorQueries.SystemErrorQuery;
 using Application.UseCases._SystemErrorCases;
-using Domain.RoleAgg.RoleEntity;
+using Domain.UserAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
 using Infrastructure.Context.Contexts;
 using Infrastructure.Repository;
@@ -18,14 +18,14 @@ services.AddFrameworkApplication()
     .AddFrameworkPresentationWeb(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
-builder.Services.AddIdentity<User, Role>()
+services.AddIdentity<User, Role>()
     .AddEntityFrameworkStores<EfContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddIdentityServer()
+services.AddIdentityServer()
     .AddAspNetIdentity<User>()
-    .AddInMemoryApiScopes(Config.ApiScopes)
     .AddInMemoryClients(Config.Clients)
+    .AddInMemoryApiScopes(Config.ApiScopes)
     .AddDeveloperSigningCredential();
 
 builder.Services.AddControllers();
