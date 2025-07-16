@@ -2,7 +2,7 @@
 
 namespace Domain.UserAgg.UserEntity
 {
-    public class UserClaim : IdentityUserClaim<long>
+    public class UserClaim : IdentityUserClaim<string>
     {
     }
 }

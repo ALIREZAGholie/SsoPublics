@@ -1,5 +1,7 @@
 ﻿using Application.IRepositories.IAuthRepositories;
+using Application.UseCases.AuthCases;
 using Asp.Versioning;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -10,26 +12,15 @@ namespace WebApi.Controllers.V1
     [ApiVersion("1.0")]
     [ApiExplorerSettings(GroupName = "Auth V1")]
     [AllowAnonymous]
-    public class AuthController(IAuthRepository authService) : ApiController
+    [Route("")]
+    public class AuthController(IMediator mediator) : ApiController
     {
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterRequest request)
-        {
-            var result = await authService.RegisterAsync(request);
-            if (!result)
-                return BadRequest("ثبت نام ناموفق بود");
-
-            return Ok("ثبت نام موفق بود");
-        }
+        public async Task<IActionResult> Register(RegisterUserCommand command)
+            => Ok(await mediator.Send(command));
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginRequest request)
-        {
-            var token = await authService.LoginAsync(request);
-            if (token == null)
-                return Unauthorized();
-
-            return Ok(new { Token = token });
-        }
+        public async Task<IActionResult> Login(LoginCommand command)
+            => Ok(await mediator.Send(command));
     }
 }

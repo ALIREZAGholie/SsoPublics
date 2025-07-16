@@ -2,7 +2,7 @@
 
 namespace Domain.UserAgg.RoleEntity
 {
-    public class RoleClaim : IdentityRoleClaim<long>
+    public class RoleClaim : IdentityRoleClaim<string>
     {
     }
 }

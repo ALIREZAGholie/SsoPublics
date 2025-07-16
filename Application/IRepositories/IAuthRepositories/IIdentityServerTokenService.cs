@@ -4,6 +4,6 @@ namespace Application.IRepositories.IAuthRepositories
 {
     public interface IIdentityServerTokenService
     {
-        Task<TokenResponse> GetTokenAsync(string username, string password);
+        Task<string> GetTokenAsync(string username, string password);
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Infrastructure.Context.CustomIdentity
 {
-    public class CustomRoleStore : RoleStore<Role, EfContext, long, UserRole, RoleClaim>
+    public class CustomRoleStore : RoleStore<Role, EfContext, string, UserRole, RoleClaim>
     {
         public CustomRoleStore(EfContext context, IdentityErrorDescriber describer = null) : base(context, describer) { }
     }

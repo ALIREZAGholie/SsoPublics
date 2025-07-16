@@ -15,7 +15,7 @@ namespace Infrastructure.Repository
             services.AddScoped<EfContextInitializer>();
 
             #region Auth
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddHttpClient<IIdentityServerTokenService, IdentityServerTokenService>();
             #endregion
 
