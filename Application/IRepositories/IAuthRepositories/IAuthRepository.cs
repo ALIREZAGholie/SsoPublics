@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Duende.IdentityModel.Client;
+using Microsoft.AspNetCore.Identity.Data;
 
 namespace Application.IRepositories.IAuthRepositories
 {
     public interface IAuthRepository
     {
         Task<bool> RegisterAsync(RegisterRequest request);
-        Task<string> LoginAsync(LoginRequest request);
+        Task<TokenResponse> LoginAsync(LoginRequest request);
     }
 }

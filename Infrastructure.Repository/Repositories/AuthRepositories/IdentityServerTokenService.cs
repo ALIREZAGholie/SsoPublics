@@ -5,7 +5,7 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
 {
     public class IdentityServerTokenService(HttpClient httpClient) : IIdentityServerTokenService
     {
-        public async Task<string> GetTokenAsync(string username, string password)
+        public async Task<TokenResponse> GetTokenAsync(string username, string password)
         {
             var disco = await httpClient.GetDiscoveryDocumentAsync("https://localhost:44355"); // آدرس IdentityServer
 
@@ -25,7 +25,7 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
             if (tokenResponse.IsError)
                 throw new Exception(tokenResponse.Error);
 
-            return tokenResponse.AccessToken;
+            return tokenResponse;
         }
     }
 }

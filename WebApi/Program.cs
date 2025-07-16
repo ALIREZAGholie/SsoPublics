@@ -3,6 +3,7 @@ using Application.UseCases._SystemErrorCases;
 using Domain.UserAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
 using Infrastructure.Context.Contexts;
+using Infrastructure.Context.CustomIdentity;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
 using WebApi;
@@ -18,8 +19,12 @@ services.AddFrameworkApplication()
     .AddFrameworkPresentationWeb(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
-services.AddIdentity<User, Role>()
-    .AddEntityFrameworkStores<EfContext>()
+services.AddIdentity<User, Role>(options =>
+    {
+        
+    })
+    .AddUserStore<CustomUserStore>()
+    .AddRoleStore<CustomRoleStore>()
     .AddDefaultTokenProviders();
 
 services.AddIdentityServer()
@@ -27,6 +32,8 @@ services.AddIdentityServer()
     .AddInMemoryClients(Config.Clients)
     .AddInMemoryApiScopes(Config.ApiScopes)
     .AddDeveloperSigningCredential();
+
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

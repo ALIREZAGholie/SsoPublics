@@ -1,5 +1,6 @@
 ﻿using Application.IRepositories.IAuthRepositories;
 using Domain.UserAgg.UserEntity;
+using Duende.IdentityModel.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 
@@ -8,8 +9,7 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
     public class AuthRepository(
         UserManager<User> userManager,
         SignInManager<User> signInManager,
-        IIdentityServerTokenService tokenService)
-        : IAuthRepository
+        IIdentityServerTokenService tokenService) : IAuthRepository
     {
         public async Task<bool> RegisterAsync(RegisterRequest request)
         {
@@ -18,7 +18,7 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
             return result.Succeeded;
         }
 
-        public async Task<string> LoginAsync(LoginRequest request)
+        public async Task<TokenResponse> LoginAsync(LoginRequest request)
         {
             var user = await userManager.FindByNameAsync(request.Email);
             if (user == null) return null;
