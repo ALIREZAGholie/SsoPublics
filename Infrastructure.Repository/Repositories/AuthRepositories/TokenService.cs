@@ -27,26 +27,29 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
 
             identity.AddClaims(claims);
 
-            var roleFirst = user.UserRoles.FirstOrDefault();
-
-            Claim roleClaim = new("RoleId", roleFirst?.Role?.Id.ToString()!);
-
-            identity.AddClaim(roleClaim);
-
-            JArray roleLongs = [];
-
-            foreach (var role in user.UserRoles)
+            if (user?.UserRoles is { Count: > 0 })
             {
-                JObject jObjectId = new()
+                var roleFirst = user.UserRoles?.FirstOrDefault();
+
+                Claim roleClaim = new("RoleId", roleFirst?.Role?.Id?.ToString());
+
+                identity.AddClaim(roleClaim);
+
+                JArray roleLongs = [];
+
+                foreach (var role in user.UserRoles)
                 {
-                    ["RoleId"] = role.Role?.Id
-                };
-                roleLongs.Add(jObjectId);
+                    JObject jObjectId = new()
+                    {
+                        ["RoleId"] = role.Role?.Id
+                    };
+                    roleLongs.Add(jObjectId);
+                }
+
+                Claim claimRoles = new("RolesId", JsonConvert.SerializeObject(roleLongs));
+
+                identity.AddClaim(claimRoles);
             }
-
-            Claim claimRoles = new("RolesId", JsonConvert.SerializeObject(roleLongs));
-
-            identity.AddClaim(claimRoles);
 
             var expiresMinutes = int.Parse(configuration["JwtConfig:ExpireToken"]!);
 

@@ -13,6 +13,7 @@ namespace Domain.UserAgg.RoleEntity
 
         public Role(string name, string? parentId, DateTime roleExpireDate)
         {
+            Id = Guid.NewGuid().ToString();
             Name = name;
             Parent = "";
             ParentId = parentId;

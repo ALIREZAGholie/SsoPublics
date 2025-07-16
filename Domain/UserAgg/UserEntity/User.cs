@@ -13,6 +13,7 @@ namespace Domain.UserAgg.UserEntity
 
         public User(string firstName, string lastName, PhoneNumber userName)
         {
+            Id = Guid.NewGuid().ToString();
             FirstName = firstName;
             LastName = lastName;
             UserName = userName;
