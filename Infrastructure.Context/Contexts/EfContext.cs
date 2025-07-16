@@ -33,6 +33,13 @@ namespace Infrastructure.Context.Contexts
         {
             base.OnModelCreating(builder);
 
+            //builder.HasSequence<int>("LocationType_GKey");
+            builder.HasSequence<int>("Role_GKey");
+            //builder.HasSequence<int>("Section_GKey");
+            //builder.HasSequence<int>("Position_GKey");
+            //builder.HasSequence<int>("Rank_GKey");
+            //builder.HasSequence<int>("ConfigOrganizationType_GKey");
+
             var version = GetStoreOptions()?.SchemaVersion ?? IdentitySchemaVersions.Version1;
             OnModelCreatingVersion(builder, version);
         }
