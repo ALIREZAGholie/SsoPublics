@@ -7,9 +7,7 @@ using Webgostar.Framework.Presentation.Web.ControllerTools;
 namespace WebApi.Controllers.V1.Auth
 {
     [ApiVersion("1.0", Deprecated = false)]
-    [Route("v{version:apiVersion}/[controller]")]
-    [ApiController]
-    [Authorize]
+    [ApiExplorerSettings(GroupName = "Form V1")]
     public class FormController : ApiController
     {
         [HttpPost("Add")]

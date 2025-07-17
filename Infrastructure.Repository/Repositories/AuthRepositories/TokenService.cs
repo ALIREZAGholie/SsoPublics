@@ -72,7 +72,9 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
 
             var token = jwtTokenHandler.CreateToken(jwt);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var result = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return result;
         }
 
         private async Task<string> CreateToken(User user, List<UserRole> userRoles)

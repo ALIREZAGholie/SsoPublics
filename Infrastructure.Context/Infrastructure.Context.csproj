@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Webgostar.Framework.Infrastructure\Webgostar.Framework.Infrastructure.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
 	  <PackageReference Include="TarazWebGostar.Framework.Infrastructure" Version="1.0.4" />
-  </ItemGroup>
+  </ItemGroup>-->
 
 </Project>

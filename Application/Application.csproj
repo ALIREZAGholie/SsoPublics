@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Webgostar.Framework.Application\Webgostar.Framework.Application.csproj" />
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
   </ItemGroup>
 
@@ -14,9 +15,9 @@
     <Folder Include="Dto\_CommonsDtos\" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Include="TarazWebGostar.Framework.Application" Version="1.0.2" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <Compile Update="Properties\MessageResource.Designer.cs">

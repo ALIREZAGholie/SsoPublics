@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="TarazWebGostar.Framework.Base" Version="1.0.5" />
-	  <PackageReference Include="TarazWebGostar.Framework.Domain" Version="1.0.4" />
+	  <!--<PackageReference Include="TarazWebGostar.Framework.Base" Version="1.0.5" />
+	  <PackageReference Include="TarazWebGostar.Framework.Domain" Version="1.0.4" />-->
 
 	  <PackageReference Include="Duende.IdentityServer" Version="7.2.4" />
 	  <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.2.4" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Webgostar.Framework.Base\Webgostar.Framework.Base.csproj" />
+    <ProjectReference Include="..\..\Framework\Webgostar.Framework.Domain\Webgostar.Framework.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

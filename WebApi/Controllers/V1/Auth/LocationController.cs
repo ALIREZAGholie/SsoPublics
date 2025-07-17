@@ -14,9 +14,7 @@ using Webgostar.Framework.Presentation.Web.ControllerTools;
 namespace WebApi.Controllers.V1.Auth
 {
     [ApiVersion("1.0", Deprecated = false)]
-    [Route("v{version:apiVersion}/[controller]")]
-    [ApiController]
-    [Authorize]
+    [ApiExplorerSettings(GroupName = "Location V1")]
     public class LocationController : ApiController
     {
         private readonly IMediator _mediator;

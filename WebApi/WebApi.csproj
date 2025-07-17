@@ -6,9 +6,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 		<PackageReference Include="TarazWebGostar.Framework.Presentation.Web" Version="1.0.3" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.18">
@@ -22,6 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Framework\Webgostar.Framework.Presentation.Web\Webgostar.Framework.Presentation.Web.csproj" />
 		<ProjectReference Include="..\Infrastructure.Repository\Infrastructure.Repository.csproj" />
 	</ItemGroup>
 

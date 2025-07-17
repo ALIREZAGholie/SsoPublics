@@ -3,7 +3,6 @@ using Application.Queries.OrganizationQueries.SectionQuery;
 using Application.UseCases.OrganizationCases.SectionCase;
 using Asp.Versioning;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Webgostar.Framework.Base.BaseModels.GridData;
 using Webgostar.Framework.Presentation.Web.ControllerTools;
@@ -11,8 +10,7 @@ using Webgostar.Framework.Presentation.Web.ControllerTools;
 namespace WebApi.Controllers.V1.Organization
 {
     [ApiVersion("1.0", Deprecated = false)]
-    [Route("v{version:apiVersion}/[controller]")]
-    [Authorize]
+    [ApiExplorerSettings(GroupName = "Section V1")]
     public class SectionController : ApiController
     {
         private readonly IMediator _mediator;

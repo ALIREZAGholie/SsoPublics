@@ -1,6 +1,18 @@
 ﻿using Domain.ApiEndpointAgg.ApiEndpointEntity;
 using Domain.ClientAgg.ClientEntity;
+using Domain.CompanyAgg.CompanyEntity;
+using Domain.FormAgg.FormEntity;
+using Domain.FormAgg.FormTypeEntity;
+using Domain.HardCodeAgg.HardCodeEntity;
+using Domain.LocationAgg.LocationEntity;
+using Domain.LocationAgg.LocationTypeEntity;
+using Domain.OrganizationAgg.ConfigOrganizationEntity;
+using Domain.OrganizationAgg.PositionEntity;
+using Domain.OrganizationAgg.RankEntity;
+using Domain.OrganizationAgg.SectionEntity;
+using Domain.RoleAgg.MemberShipTypeEntity;
 using Domain.RoleAgg.RoleEntity;
+using Domain.RoleAgg.RoleFormEntity;
 using Domain.UserAgg.UserEntity;
 using Domain.UserAgg.UserRoleEntity;
 using Microsoft.AspNetCore.Identity;
@@ -27,22 +39,50 @@ namespace Infrastructure.Context.Contexts
         public DbSet<RoleClaim> RoleClaim { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
         #endregion
+
         public DbSet<Client> Client { get; set; }
         public DbSet<ApiEndpoint> ApiEndpoint { get; set; }
-        public DbSet<ApiEndpointType> ApiEndpointType { get; set; }
+        public DbSet<ApiMethodType> ApiMethodTypes { get; set; }
         public DbSet<RoleApiPermission> RoleApiPermission { get; set; }
+
+        #region Form
+        public DbSet<Form> Form { get; set; }
+        public DbSet<FormType> FormType { get; set; }
+        public DbSet<RoleForm> RoleForm { get; set; }
+        #endregion
+
+        #region Organization
+        public DbSet<Company> Company { get; set; }
+        public DbSet<MemberShipType> MemberShipType { get; set; }
+        public DbSet<Position> Position { get; set; }
+        public DbSet<Rank> Rank { get; set; }
+        public DbSet<Section> Section { get; set; }
+        public DbSet<ConfigOrganization> ConfigOrganization { get; set; }
+        public DbSet<ConfigOrganizationType> ConfigOrganizationType { get; set; }
+        public DbSet<ConfigOrganizationRank> ConfigOrganizationRank { get; set; }
+        #endregion
+
+        #region Location
+        public DbSet<Location> Location { get; set; }
+        public DbSet<LocationType> LocationType { get; set; }
+        #endregion
+
+        #region HardCode
+        public DbSet<HardCode> HardCode { get; set; }
+        #endregion
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            //builder.HasSequence<int>("LocationType_GKey");
+            builder.HasSequence<int>("ApiMethodType_GKey");
+            builder.HasSequence<int>("LocationType_GKey");
             builder.HasSequence<int>("Role_GKey");
-            //builder.HasSequence<int>("Section_GKey");
-            //builder.HasSequence<int>("Position_GKey");
-            //builder.HasSequence<int>("Rank_GKey");
-            //builder.HasSequence<int>("ConfigOrganizationType_GKey");
+            builder.HasSequence<int>("Section_GKey");
+            builder.HasSequence<int>("Position_GKey");
+            builder.HasSequence<int>("Rank_GKey");
+            builder.HasSequence<int>("ConfigOrganizationType_GKey");
 
             var version = GetStoreOptions()?.SchemaVersion ?? IdentitySchemaVersions.Version1;
             OnModelCreatingVersion(builder, version);

@@ -13,11 +13,11 @@ namespace WebApi.Controllers.V1
     [Route("")]
     public class AuthController(IMediator mediator) : ApiController
     {
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterUserCommand command)
             => Ok(await mediator.Send(command));
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginCommand command)
             => Ok(await mediator.Send(command));
     }

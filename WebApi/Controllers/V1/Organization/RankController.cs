@@ -11,8 +11,7 @@ using Webgostar.Framework.Presentation.Web.ControllerTools;
 namespace WebApi.Controllers.V1.Organization
 {
     [ApiVersion("1.0", Deprecated = false)]
-    [Route("v{version:apiVersion}/[controller]")]
-    [Authorize]
+    [ApiExplorerSettings(GroupName = "Rank V1")]
     public class RankController : ApiController
     {
         private readonly IMediator _mediator;

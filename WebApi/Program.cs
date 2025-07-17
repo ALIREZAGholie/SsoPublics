@@ -4,8 +4,6 @@ using Domain.RoleAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
 using Infrastructure.Context.CustomIdentity;
 using Infrastructure.Repository;
-using Infrastructure.Repository.Repositories.RoleRepositories;
-using Infrastructure.Repository.Repositories.UserRepositories;
 using Microsoft.AspNetCore.Identity;
 using WebApi;
 using Webgostar.Framework.Application;
@@ -20,9 +18,9 @@ services.AddFrameworkApplication()
     .AddFrameworkPresentationWeb(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
-services.AddIdentity<User, Role>(options =>
+services.AddIdentity<User, Role>(o =>
     {
-
+        
     })
     .AddUserStore<CustomUserStore>()
     .AddRoleStore<CustomRoleStore>()
@@ -38,10 +36,12 @@ builder.Services.AddIdentityServer()
     //.AddInMemoryIdentityResources(Config.IdentityResources)
     .AddDeveloperSigningCredential();
 
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//services.AddAuthorizationBuilder()
+//    .AddPolicy("ApiPermission", policy =>
+//    {
+//        policy.Requirements.Add(new ApiPermissionRequirement());
+//    });
+//services.AddSingleton<IAuthorizationHandler, ApiPermissionHandler>();
 
 var app = builder.Build();
 
