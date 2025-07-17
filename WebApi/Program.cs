@@ -1,10 +1,11 @@
 ﻿using Application.Queries._SystemErrorQueries.SystemErrorQuery;
 using Application.UseCases._SystemErrorCases;
-using Domain.UserAgg.RoleEntity;
+using Domain.RoleAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
-using Infrastructure.Context.Contexts;
 using Infrastructure.Context.CustomIdentity;
 using Infrastructure.Repository;
+using Infrastructure.Repository.Repositories.RoleRepositories;
+using Infrastructure.Repository.Repositories.UserRepositories;
 using Microsoft.AspNetCore.Identity;
 using WebApi;
 using Webgostar.Framework.Application;
@@ -21,18 +22,21 @@ services.AddFrameworkApplication()
 
 services.AddIdentity<User, Role>(options =>
     {
-        
+
     })
     .AddUserStore<CustomUserStore>()
     .AddRoleStore<CustomRoleStore>()
+    //.AddUserManager<UserRepository>()
+    //.AddRoleManager<RoleRepository>()
     .AddDefaultTokenProviders();
 
-services.AddIdentityServer()
+builder.Services.AddIdentityServer()
     .AddAspNetIdentity<User>()
     .AddInMemoryClients(Config.Clients)
     .AddInMemoryApiScopes(Config.ApiScopes)
+    //.AddInMemoryApiResources(Config.ApiResources)
+    //.AddInMemoryIdentityResources(Config.IdentityResources)
     .AddDeveloperSigningCredential();
-
 
 
 builder.Services.AddControllers();

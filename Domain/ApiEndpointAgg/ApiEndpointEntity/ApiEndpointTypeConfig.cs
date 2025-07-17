@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.ApiEndpointAgg.ApiEndpointEntity
 {
-    public class ApiEndpointTypeConfig:IEntityTypeConfiguration<ApiEndpointType>
+    public class ApiEndpointTypeConfig : IEntityTypeConfiguration<ApiEndpointType>
     {
         public void Configure(EntityTypeBuilder<ApiEndpointType> builder)
         {

@@ -1,4 +1,4 @@
-﻿using Domain.UserAgg.RoleEntity;
+﻿using Domain.RoleAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
 using Domain.UserAgg.UserRoleEntity;
 using Infrastructure.Context.Contexts;

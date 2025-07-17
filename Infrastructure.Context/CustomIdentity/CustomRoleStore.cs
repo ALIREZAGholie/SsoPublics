@@ -1,4 +1,4 @@
-﻿using Domain.UserAgg.RoleEntity;
+﻿using Domain.RoleAgg.RoleEntity;
 using Domain.UserAgg.UserRoleEntity;
 using Infrastructure.Context.Contexts;
 using Microsoft.AspNetCore.Identity;

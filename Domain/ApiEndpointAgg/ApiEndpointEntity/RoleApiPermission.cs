@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using Domain.UserAgg.RoleEntity;
-using Webgostar.Framework.Base.BaseModels;
+﻿using Domain.RoleAgg.RoleEntity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.ApiEndpointAgg.ApiEndpointEntity
 {
@@ -8,8 +7,8 @@ namespace Domain.ApiEndpointAgg.ApiEndpointEntity
     {
         public RoleApiPermission()
         {
-            
-        }  
+
+        }
 
         public string RoleId { get; private set; }
         public long ApiEndpointId { get; private set; }

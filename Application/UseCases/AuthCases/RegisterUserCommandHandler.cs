@@ -1,9 +1,8 @@
-﻿using System.Text;
-using Application._ApplicationException;
+﻿using Application._ApplicationException;
 using Domain.UserAgg.UserEntity;
-using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Webgostar.Framework.Application.QueryCommandTools;
+using System.Text;
+using Application.IRepositories.IUserRepositories;
 using Webgostar.Framework.Base.BaseModels;
 
 namespace Application.UseCases.AuthCases
@@ -12,9 +11,9 @@ namespace Application.UseCases.AuthCases
 
     public class RegisterUserHandler : ICommandHandler<RegisterUserCommand, bool>
     {
-        private readonly UserManager<User> _userManager;
+        private readonly IUserRepository _userManager;
 
-        public RegisterUserHandler(UserManager<User> userManager)
+        public RegisterUserHandler(IUserRepository userManager)
         {
             _userManager = userManager;
         }
@@ -25,7 +24,7 @@ namespace Application.UseCases.AuthCases
             {
                 var user = new User(request.FirstName, request.LastName, request.Username);
 
-                var result = await _userManager.CreateAsync(user, request.Password);
+                var result = await _userManager.UserManager.CreateAsync(user, request.Password);
 
                 if (result.Succeeded) return OperationResult<bool>.Success(result.Succeeded);
                 var error = new StringBuilder();
@@ -37,7 +36,7 @@ namespace Application.UseCases.AuthCases
 
                 throw new AuthException(error.ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="TarazWebGostar.Framework.Base" Version="1.0.3" />
+	  <PackageReference Include="TarazWebGostar.Framework.Base" Version="1.0.5" />
 	  <PackageReference Include="TarazWebGostar.Framework.Domain" Version="1.0.4" />
 
 	  <PackageReference Include="Duende.IdentityServer" Version="7.2.4" />

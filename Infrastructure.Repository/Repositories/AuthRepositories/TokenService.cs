@@ -1,23 +1,24 @@
 ﻿using Application.IRepositories.IAuthRepositories;
+using Application.IRepositories.IUserRepositories;
 using Domain.UserAgg.UserEntity;
 using Domain.UserAgg.UserRoleEntity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace Infrastructure.Repository.Repositories.AuthRepositories
 {
-    public class TokenService(UserManager<User> userManager, IConfiguration configuration)
+    public class TokenService(IUserRepository userManager, IConfiguration configuration)
         : ITokenService
     {
         public async Task<string> GenerateTokenAsync(User user)
         {
-            var claims = await userManager.GetClaimsAsync(user);
+            var claims = await userManager.UserManager.GetClaimsAsync(user);
 
             ClaimsIdentity identity = new([
                 new Claim("Id", user.Id.ToString()),
@@ -90,34 +91,26 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
 
                 identity.AddClaim(roleClaim);
 
-                JArray roleGuids = [];
                 JArray roleLongs = [];
 
                 foreach (var role in userRoles)
                 {
-                    JObject jObject = new()
-                    {
-                        ["RoleGuid"] = role.Role?.Guid
-                    };
 
                     JObject jObjectId = new()
                     {
                         ["RoleId"] = role.Role?.Id
                     };
 
-                    roleGuids.Add(jObject);
                     roleLongs.Add(jObjectId);
                 }
 
-                Claim claimGuids = new("RolesGuid", JsonConvert.SerializeObject(roleGuids));
                 Claim claimRoles = new("RolesId", JsonConvert.SerializeObject(roleLongs));
 
-                identity.AddClaim(claimGuids);
                 identity.AddClaim(claimRoles);
 
                 return await WriteToken(identity);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
@@ -149,7 +142,7 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
 
                 return jwtTokenHandler.WriteToken(token);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

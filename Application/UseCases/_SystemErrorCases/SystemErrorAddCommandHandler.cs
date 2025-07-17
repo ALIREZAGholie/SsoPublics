@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Webgostar.Framework.Application.QueryCommandTools;
 using Webgostar.Framework.Base.BaseModels;
 
 namespace Application.UseCases._SystemErrorCases

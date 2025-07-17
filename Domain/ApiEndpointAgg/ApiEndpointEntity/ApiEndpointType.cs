@@ -1,6 +1,4 @@
-﻿using Webgostar.Framework.Base.BaseModels;
-
-namespace Domain.ApiEndpointAgg.ApiEndpointEntity
+﻿namespace Domain.ApiEndpointAgg.ApiEndpointEntity
 {
     public class ApiEndpointType : BaseEntity
     {

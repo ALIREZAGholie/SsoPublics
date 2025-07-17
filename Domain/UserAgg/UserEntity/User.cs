@@ -31,6 +31,18 @@ namespace Domain.UserAgg.UserEntity
 
         public ICollection<UserRole>? UserRoles { get; set; } = [];
 
+        public User Edit(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            FullName = $"{firstName} {lastName}";
+            LockoutEnd = null;
+            LockoutEnabled = false;
+            AccessFailedCount = 0;
+
+            return this;
+        }
+
         public void LoginFailed()
         {
             AccessFailedCount++;

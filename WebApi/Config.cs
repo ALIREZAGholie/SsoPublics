@@ -1,4 +1,5 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
 
 namespace WebApi
 {
@@ -19,7 +20,8 @@ namespace WebApi
                     ClientId = "postman-client",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedScopes = { "api.read", "api.write" }
+                    AllowedScopes = { "api.read", "api.write" },
+                    AllowOfflineAccess = true
                 }
             };
 
@@ -28,13 +30,14 @@ namespace WebApi
             {
                 new Client
                 {
-                    ClientId = "postman-client",
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientId = "client_id",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
                     ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedScopes = { "api.read", "api.write", "offline_access" },
-                    AllowOfflineAccess = true
+                    AllowedScopes = { "api1", IdentityServerConstants.StandardScopes.OfflineAccess },
+                    AllowOfflineAccess = true,
+                    RefreshTokenUsage = TokenUsage.ReUse,
+                    RefreshTokenExpiration = TokenExpiration.Sliding
                 }
             };
-
     }
 }

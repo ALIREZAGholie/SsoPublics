@@ -1,9 +1,7 @@
-﻿using Application.IRepositories.IAuthRepositories;
-using Application.UseCases.AuthCases;
+﻿using Application.UseCases.AuthCases;
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Webgostar.Framework.Presentation.Web.ControllerTools;
 

@@ -1,6 +1,4 @@
-﻿using Duende.IdentityModel.Client;
-
-namespace Application.IRepositories.IAuthRepositories
+﻿namespace Application.IRepositories.IAuthRepositories
 {
     public interface IIdentityServerTokenService
     {

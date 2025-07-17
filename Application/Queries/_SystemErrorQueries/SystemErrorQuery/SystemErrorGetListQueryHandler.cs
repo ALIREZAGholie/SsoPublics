@@ -1,6 +1,4 @@
-﻿using Webgostar.Framework.Application.QueryCommandTools;
-
-namespace Application.Queries._SystemErrorQueries.SystemErrorQuery
+﻿namespace Application.Queries._SystemErrorQueries.SystemErrorQuery
 {
     public record SystemErrorGetListQuery() : IQuery<bool>;
 

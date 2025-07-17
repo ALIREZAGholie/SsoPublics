@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Webgostar.Framework.Base.BaseModels;
 
 namespace Domain.ApiEndpointAgg.ApiEndpointEntity
 {
@@ -7,11 +6,11 @@ namespace Domain.ApiEndpointAgg.ApiEndpointEntity
     {
         public ApiEndpoint()
         {
-            
+
         }
 
-        public string ApiEndpointTypeId { get; private set; } 
-        public string Path { get; private set; }
+        public string ApiEndpointTypeId { get; private set; }
+        public string Route { get; private set; }
         public string DisplayName { get; private set; }
         public bool IsActive { get; private set; }
 
@@ -20,18 +19,18 @@ namespace Domain.ApiEndpointAgg.ApiEndpointEntity
         public ICollection<RoleApiPermission> RolePermissions { get; set; }
 
 
-        public ApiEndpoint(string apiEndpointTypeId, string path, string displayName)
+        public ApiEndpoint(string apiEndpointTypeId, string route, string displayName)
         {
             ApiEndpointTypeId = apiEndpointTypeId;
-            Path = path;
+            Route = route;
             DisplayName = displayName;
             IsActive = true;
         }
 
-        public ApiEndpoint Edit(string apiEndpointTypeId, string path, string displayName)
+        public ApiEndpoint Edit(string apiEndpointTypeId, string route, string displayName)
         {
             ApiEndpointTypeId = apiEndpointTypeId;
-            Path = path;
+            Route = route;
             DisplayName = displayName;
 
             return this;

@@ -1,4 +1,6 @@
-﻿using Domain.UserAgg.RoleEntity;
+﻿using Domain.ApiEndpointAgg.ApiEndpointEntity;
+using Domain.ClientAgg.ClientEntity;
+using Domain.RoleAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
 using Domain.UserAgg.UserRoleEntity;
 using Microsoft.AspNetCore.Identity;
@@ -7,8 +9,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Webgostar.Framework.Infrastructure.Contexts;
 using Webgostar.Framework.Infrastructure.MediatR;
 
@@ -27,6 +27,10 @@ namespace Infrastructure.Context.Contexts
         public DbSet<RoleClaim> RoleClaim { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
         #endregion
+        public DbSet<Client> Client { get; set; }
+        public DbSet<ApiEndpoint> ApiEndpoint { get; set; }
+        public DbSet<ApiEndpointType> ApiEndpointType { get; set; }
+        public DbSet<RoleApiPermission> RoleApiPermission { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -1,7 +1,7 @@
 ﻿using Application.IRepositories.IAuthRepositories;
+using Application.IRepositories.IUserRepositories;
 using Domain.UserAgg.UserEntity;
 using Microsoft.AspNetCore.Identity;
-using Webgostar.Framework.Application.QueryCommandTools;
 using Webgostar.Framework.Base.BaseModels;
 
 namespace Application.UseCases.AuthCases
@@ -10,7 +10,7 @@ namespace Application.UseCases.AuthCases
 
     public class LoginHandler(
         SignInManager<User> signInManager,
-        UserManager<User> userManager,
+        IUserRepository userManager,
         ITokenService tokenService)
         : ICommandHandler<LoginCommand, string>
     {
@@ -18,18 +18,18 @@ namespace Application.UseCases.AuthCases
         {
             try
             {
-                var user = await userManager.FindByNameAsync(request.Username);
+                var user = await userManager.UserManager.FindByNameAsync(request.Username);
                 if (user == null) return null;
 
                 var result = await signInManager.CheckPasswordSignInAsync(user, request.Password, false);
                 if (!result.Succeeded) return null;
 
                 var token = await tokenService.GenerateTokenAsync(user);
-                return string.IsNullOrEmpty(token) ? 
-                    OperationResult<string>.Error("Token generation failed.") : 
+                return string.IsNullOrEmpty(token) ?
+                    OperationResult<string>.Error("Token generation failed.") :
                         OperationResult<string>.Success(token);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
