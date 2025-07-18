@@ -1,4 +1,4 @@
-﻿using Application.UseCases.AuthCases;
+﻿using Application.UseCases.AuthCases.AuthCase;
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -14,11 +14,11 @@ namespace WebApi.Controllers.V1
     public class AuthController(IMediator mediator) : ApiController
     {
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(RegisterUserCommand command)
-            => Ok(await mediator.Send(command));
+        public async Task<ApiResult<bool>> Register(RegisterUserCommand command)
+            => CommandResult(await mediator.Send(command));
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginCommand command)
-            => Ok(await mediator.Send(command));
+        public async Task<ApiResult<string>> Login(LoginCommand command)
+            => CommandResult(await mediator.Send(command));
     }
 }

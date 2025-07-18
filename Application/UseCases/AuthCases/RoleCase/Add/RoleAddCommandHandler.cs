@@ -1,4 +1,5 @@
-﻿using Application.IRepositories.IRoleRepositories;
+﻿using Application._ApplicationException;
+using Application.IRepositories.IRoleRepositories;
 using Domain.RoleAgg.RoleEntity;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
@@ -9,12 +10,12 @@ namespace Application.UseCases.AuthCases.RoleCase.Add
 {
     public class RoleAddCommand : ICommand<bool>
     {
-        public string ParentId { get; set; }
-        public long UnitId { get; set; }
+        public long ParentId { get; set; }
+        public long CompanyId { get; set; }
         public string Name { get; set; }
         public bool AccessAll { get; set; }
-        public bool AccessAllSoldier { get; set; }
-        public DateTime RoleExpireDate { get; set; }
+        public bool AccessAllEmploye { get; set; }
+        public DateTime? RoleExpireDate { get; set; }
         public long MemberShipTypeId { get; set; }
     }
 
@@ -24,12 +25,10 @@ namespace Application.UseCases.AuthCases.RoleCase.Add
         {
             RuleFor(x => x.ParentId)
                 .NotNull().WithMessage("نقش پایه را انتخاب کنید");
-            RuleFor(x => x.UnitId)
-                .NotNull().WithMessage("واحد نقش را انخاب کنید");
+            RuleFor(x => x.CompanyId)
+                .NotNull().WithMessage("شرکت نقش را انخاب کنید");
             RuleFor(x => x.Name)
                 .NotNull().WithMessage("نام نقش را وارد کنید");
-            RuleFor(x => x.RoleExpireDate)
-                .NotNull().WithMessage("تاریخ انقضا نقش را وارد کنید");
             RuleFor(x => x.MemberShipTypeId)
                 .NotNull().WithMessage("نوع عضوبت را انتخاب کنید")
                 .NotEqual(0).WithMessage("نوع عضوبت را انتخاب کنید")
@@ -54,14 +53,10 @@ namespace Application.UseCases.AuthCases.RoleCase.Add
             {
                 await _unitOfWork.BeginTransactionAsync(cancellationToken);
 
-                Role role = new(request.Name, request.ParentId, request.UnitId,
-                    request.AccessAll, request.AccessAllSoldier, request.RoleExpireDate, request.MemberShipTypeId);
+                Role role = new(request.Name, request.ParentId, request.CompanyId,
+                    request.AccessAll, request.AccessAllEmploye, request.RoleExpireDate);
 
-                await _repository.RoleManager.CreateAsync(role);
-
-                var parents = await _repository.GetParents(request.ParentId, role.Id);
-                role.SetParents(parents);
-                await _repository.RoleManager.UpdateAsync(role);
+                await _repository.Add(role, cancellationToken);
 
                 await _unitOfWork.CommitTransactionAsync(cancellationToken);
                 return OperationResult<bool>.Success(true);

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.UserAgg.UserRoleEntity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.RoleAgg.RoleEntity
@@ -14,6 +15,10 @@ namespace Domain.RoleAgg.RoleEntity
                 .WithMany(r => r.SubRoles)
                 .HasForeignKey(r => r.ParentId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(x => x.Users)
+                .WithMany(x => x.Roles)
+                .UsingEntity<UserRole>();
         }
     }
 }

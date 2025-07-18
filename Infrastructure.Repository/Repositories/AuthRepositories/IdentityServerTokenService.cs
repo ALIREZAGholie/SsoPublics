@@ -1,5 +1,7 @@
-﻿using Application.IRepositories.IAuthRepositories;
+﻿using Application._ApplicationException;
+using Application.IRepositories.IAuthRepositories;
 using Duende.IdentityModel.Client;
+using Duende.IdentityServer.Models;
 
 namespace Infrastructure.Repository.Repositories.AuthRepositories
 {
@@ -12,18 +14,21 @@ namespace Infrastructure.Repository.Repositories.AuthRepositories
             if (disco.IsError)
                 throw new Exception(disco.Error);
 
-            var tokenResponse = await httpClient.RequestPasswordTokenAsync(new PasswordTokenRequest
+            var tokenRequest = new PasswordTokenRequest()
             {
                 Address = disco.TokenEndpoint,
-                ClientId = "postman-client",
-                ClientSecret = "secret",
+                ClientId = "client",
+                ClientSecret = "SuperSecretPassword",
                 UserName = username,
                 Password = password,
-                Scope = "api.read api.write"
-            });
+                Scope = "profile",
+                GrantType = GrantType.ResourceOwnerPassword
+            };
+
+            var tokenResponse = await httpClient.RequestPasswordTokenAsync(tokenRequest);
 
             if (tokenResponse.IsError)
-                throw new Exception(tokenResponse.Error);
+                throw new AuthException(tokenResponse.Raw);
 
             return tokenResponse.AccessToken;
         }

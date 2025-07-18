@@ -16,7 +16,7 @@ namespace Application.Queries.AuthQueries.UserQuery.GetList
         {
             try
             {
-                var users = _repository.UserManager.Users.ToList();
+                var users = _repository.Table().ToList();
 
                 return users.Adapt<List<UserDto>>();
             }

@@ -1,40 +1,63 @@
 ﻿using Application.IRepositories.IUserRepositories;
-using Duende.IdentityModel;
+using Domain.UserAgg.UserRoleEntity;
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace Infrastructure.Repository.Repositories.ClientStoreServices
 {
-    public class CustomProfileService : IProfileService
+    public class CustomProfileService(IUserRepository userRepository) : IProfileService
     {
-        private readonly IUserRepository _userManager;
-
-        public CustomProfileService(IUserRepository userManager)
-        {
-            _userManager = userManager;
-        }
-
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
-            var user = await _userManager.UserManager.FindByIdAsync(context.Subject.GetSubjectId());
-            var claims = new List<Claim>
+            var userId = context.Subject.GetSubjectId();
+            var user = await userRepository.Table()
+                .Include(x=>x.Roles)
+                .FirstOrDefaultAsync(x => x.Id == long.Parse(userId));
+
+            var roles = user.Roles;
+
+            List<Claim> claims =
+            [
+                new Claim("Id", user.Id.ToString()),
+                new Claim("FullName", user.FullName),
+                new Claim("UserName", user.UserName),
+                new Claim("UserGuid", user.Guid.ToString()),
+            ];
+
+            if (roles.Any())
             {
-                new Claim(JwtClaimTypes.Name, user.UserName),
-            };
+                claims.Add(new Claim("RoleId", roles.First().Id.ToString()));
+            }
 
-            var roles = await _userManager.UserManager.GetRolesAsync(user);
-            claims.AddRange(roles.Select(r => new Claim(JwtClaimTypes.Role, r)));
+            JArray rolesClaim = [];
 
-            context.IssuedClaims = claims;
+            foreach (var role in roles)
+            {
+                JObject jObject = new()
+                {
+                    ["RoleGuid"] = role.Guid,
+                    ["RoleId"] = role.Id
+                };
+
+                rolesClaim.Add(jObject);
+            }
+
+            Claim claimRoles = new("Roles", JsonConvert.SerializeObject(rolesClaim));
+
+            claims.Add(claimRoles);
+
+            context.IssuedClaims.AddRange(claims);
         }
 
-        public async Task IsActiveAsync(IsActiveContext context)
+        public Task IsActiveAsync(IsActiveContext context)
         {
-            var user = await _userManager.UserManager.FindByIdAsync(context.Subject.GetSubjectId());
-            context.IsActive = user != null;
+            context.IsActive = true; // یا بررسی کن کاربر غیر فعال نباشه
+            return Task.CompletedTask;
         }
     }
-
 }

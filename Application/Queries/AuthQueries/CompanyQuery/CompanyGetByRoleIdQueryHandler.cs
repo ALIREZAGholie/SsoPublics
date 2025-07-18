@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Queries.AuthQueries.CompanyQuery
 {
-    public record CompanyGetByRoleIdQuery(string RoleId) : IQuery<long>;
+    public record CompanyGetByRoleIdQuery(long RoleId) : IQuery<long>;
 
     public class CompanyGetByRoleIdHandler : IQueryHandler<CompanyGetByRoleIdQuery, long>
     {
@@ -18,7 +18,7 @@ namespace Application.Queries.AuthQueries.CompanyQuery
         {
             try
             {
-                var role = await _roleRepository.RoleManager.Roles.Where(x => x.Id == request.RoleId).Select(x => x.CompanyId).ToListAsync(cancellationToken);
+                var role = await _roleRepository.Table().Where(x => x.Id == request.RoleId).Select(x => x.CompanyId).ToListAsync(cancellationToken);
 
                 if (!role.Any())
                 {

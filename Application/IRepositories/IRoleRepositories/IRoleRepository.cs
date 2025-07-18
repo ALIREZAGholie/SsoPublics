@@ -1,12 +1,11 @@
 ﻿using Domain.RoleAgg.RoleEntity;
-using Microsoft.AspNetCore.Identity;
+using Webgostar.Framework.Base.IBaseServices;
 
 namespace Application.IRepositories.IRoleRepositories
 {
-    public interface IRoleRepository
+    public interface IRoleRepository : IBaseRepository<Role>
     {
         Task<List<Role>> AddList(List<Role> entity);
-        Task<string> GetParents(string parentId, string childId);
-        RoleManager<Role> RoleManager { get; set; }
+        Task<string> GetParents(long? parentId, long childId);
     }
 }

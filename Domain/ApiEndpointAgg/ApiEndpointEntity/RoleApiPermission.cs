@@ -10,7 +10,7 @@ namespace Domain.ApiEndpointAgg.ApiEndpointEntity
 
         }
 
-        public string RoleId { get; private set; }
+        public long RoleId { get; private set; }
         public long ApiEndpointId { get; private set; }
 
         [ForeignKey(nameof(RoleId))]
@@ -19,7 +19,7 @@ namespace Domain.ApiEndpointAgg.ApiEndpointEntity
         public ApiEndpoint ApiEndpoint { get; set; }
 
 
-        public RoleApiPermission(string roleId, long apiEndpointId)
+        public RoleApiPermission(long roleId, long apiEndpointId)
         {
             RoleId = roleId;
             ApiEndpointId = apiEndpointId;

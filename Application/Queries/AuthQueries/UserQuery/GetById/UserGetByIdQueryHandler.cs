@@ -1,11 +1,9 @@
 ﻿using Application.Dto.UserDtos;
 using Application.IRepositories.IUserRepositories;
-using Domain.UserAgg.UserEntity;
-using Microsoft.AspNetCore.Identity;
 
 namespace Application.Queries.AuthQueries.UserQuery.GetById
 {
-    public record UserGetByIdQuery(string Id) : IQuery<UserDto>;
+    public record UserGetByIdQuery(long Id) : IQuery<UserDto>;
 
     public class UserGetByIdQueryHandler : IQueryHandler<UserGetByIdQuery, UserDto>
     {
@@ -20,7 +18,7 @@ namespace Application.Queries.AuthQueries.UserQuery.GetById
         {
             try
             {
-                User user = await _userRepository.UserManager.FindByIdAsync(request.Id);
+                var user = await _userRepository.GetByIdAsync(request.Id,cancellationToken);
 
                 return user.Adapt<UserDto>();
             }

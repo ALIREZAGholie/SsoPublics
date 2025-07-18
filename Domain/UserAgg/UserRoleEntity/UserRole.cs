@@ -1,15 +1,8 @@
-﻿using Domain.RoleAgg.RoleEntity;
-using Domain.UserAgg.UserEntity;
-using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Domain.UserAgg.UserRoleEntity
+﻿namespace Domain.UserAgg.UserRoleEntity
 {
-    public class UserRole : IdentityUserRole<string>
+    public class UserRole
     {
-        [ForeignKey(nameof(UserId))]
-        public virtual User? User { get; set; }
-        [ForeignKey(nameof(RoleId))]
-        public virtual Role? Role { get; set; }
+        public long UserId { get; set; }
+        public long RoleId { get; set; }
     }
 }

@@ -67,8 +67,8 @@ namespace WebApi.Controllers.V1.Auth
             }
         }
 
-        [HttpGet("GetCompanyId/{RoleId}")]
-        public async Task<ApiResult<long>> GetCompanyId(string RoleId)
+        [HttpGet("GetCompanyId/{RoleId:long}")]
+        public async Task<ApiResult<long>> GetCompanyId(long RoleId)
         {
             try
             {

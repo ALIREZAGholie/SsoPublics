@@ -1,28 +1,28 @@
 ﻿using Application.IRepositories.IRoleRepositories;
 using Domain.RoleAgg.RoleEntity;
-using Microsoft.AspNetCore.Identity;
+using Infrastructure.Context.Contexts;
 
 namespace Infrastructure.Repository.Repositories.RoleRepositories
 {
-    public class RoleRepository : IRoleRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
         private readonly IUnitOfWork _unitOfWork;
-        public RoleRepository(RoleManager<Role> roleManager)
-        {
-            RoleManager = roleManager;
-        }
 
-        public RoleManager<Role> RoleManager { get; set; }
+        public RoleRepository(EfContext context, IRepositoryServices repositoryServices, IUnitOfWork unitOfWork) : base(context, repositoryServices)
+        {
+            _unitOfWork = unitOfWork;
+        }
 
         public async Task<List<Role>> AddList(List<Role> entity)
         {
             try
             {
                 await _unitOfWork.BeginTransactionAsync();
-                foreach (Role i in entity)
+                foreach (var i in entity)
                 {
-                    await RoleManager.CreateAsync(i);
+                    await Add(i);
                 }
+
                 await _unitOfWork.CommitTransactionAsync();
 
                 return entity;
@@ -34,20 +34,28 @@ namespace Infrastructure.Repository.Repositories.RoleRepositories
             }
         }
 
-        public async Task<string> GetParents(string parentId, string childId)
+        public async Task<string> GetParents(long? parentId, long childId)
         {
             try
             {
-                bool noParent = true;
-                string parents = "]";
+                var noParent = true;
+                var parents = "]";
                 parents = parents.Insert(0, childId.ToString());
                 parents = parents.Insert(0, ",");
 
                 while (noParent)
                 {
-                    var parent = await RoleManager.FindByIdAsync(parentId);
-                    parents = parents.Insert(0, parent.Id);
-                    parentId = parent.ParentId;
+                    var parent = await GetByIdAsync(parentId.GetValueOrDefault(0));
+
+                    if (parent is null)
+                    {
+                        noParent = false;
+                        parents = parents.Remove(0, 1);
+                        continue;
+                    }
+
+                    parents = parents.Insert(0, parent.Id.ToString());
+                    parentId = parent.ParentId.GetValueOrDefault(0);
 
                     if (parent.Id == parent.ParentId || parent.ParentId == null)
                     {
@@ -68,7 +76,5 @@ namespace Infrastructure.Repository.Repositories.RoleRepositories
                 throw;
             }
         }
-
-       
     }
 }

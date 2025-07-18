@@ -1,4 +1,6 @@
-﻿using Contracts;
+﻿using Application.UseCases.AuthCases;
+using Contracts;
+using Domain.UserAgg.UserEntity.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
@@ -12,7 +14,7 @@ namespace Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddContract();
-
+            services.AddScoped<IUserDomainService, UserDomainService>();
             return services;
         }
     }

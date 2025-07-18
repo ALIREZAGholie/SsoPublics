@@ -41,9 +41,9 @@ namespace Infrastructure.Context.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     Method = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GKey = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR ApiMethodType_GKey"),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,9 +63,9 @@ namespace Infrastructure.Context.Migrations
                     AllowedGrantTypes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AllowedScopes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AllowOfflineAccess = table.Column<bool>(type: "bit", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,9 +81,9 @@ namespace Infrastructure.Context.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GKey = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR ConfigOrganizationType_GKey"),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -98,9 +98,9 @@ namespace Infrastructure.Context.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,9 +116,9 @@ namespace Infrastructure.Context.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     Key = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -134,9 +134,9 @@ namespace Infrastructure.Context.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GKey = table.Column<long>(type: "bigint", nullable: false, defaultValueSql: "NEXT VALUE FOR LocationType_GKey"),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -153,9 +153,9 @@ namespace Infrastructure.Context.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GKey = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR Position_GKey"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -172,9 +172,9 @@ namespace Infrastructure.Context.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GKey = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR Rank_GKey"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -191,9 +191,9 @@ namespace Infrastructure.Context.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GKey = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR Section_GKey"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -212,13 +212,38 @@ namespace Infrastructure.Context.Migrations
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InnerExceptionMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ErrorFile = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SystemError", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<long>(type: "bigint", nullable: true),
+                    Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,9 +257,9 @@ namespace Infrastructure.Context.Migrations
                     Route = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -262,9 +287,9 @@ namespace Infrastructure.Context.Migrations
                     Icon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Order = table.Column<int>(type: "int", nullable: false),
                     FormId = table.Column<long>(type: "bigint", nullable: true),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -294,9 +319,9 @@ namespace Infrastructure.Context.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Parent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LocationTypeId = table.Column<long>(type: "bigint", nullable: true),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -322,9 +347,9 @@ namespace Infrastructure.Context.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -355,9 +380,9 @@ namespace Infrastructure.Context.Migrations
                     ParentId = table.Column<long>(type: "bigint", nullable: true),
                     SectionId = table.Column<long>(type: "bigint", nullable: true),
                     PositionId = table.Column<long>(type: "bigint", nullable: true),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -395,25 +420,38 @@ namespace Infrastructure.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MemberShipType",
+                name: "Role",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
-                    CompanyId = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CompanyId = table.Column<long>(type: "bigint", nullable: false),
+                    ParentId = table.Column<long>(type: "bigint", nullable: true),
+                    Parent = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoleExpireDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    GKey = table.Column<long>(type: "bigint", nullable: false, defaultValueSql: "NEXT VALUE FOR Role_GKey"),
+                    AccessAll = table.Column<bool>(type: "bit", nullable: false),
+                    AccessAllEmploye = table.Column<bool>(type: "bit", nullable: false),
+                    Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MemberShipType", x => x.Id);
+                    table.PrimaryKey("PK_Role", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MemberShipType_Company_CompanyId",
+                        name: "FK_Role_Company_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Company",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Role_Role_ParentId",
+                        column: x => x.ParentId,
+                        principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -427,9 +465,9 @@ namespace Infrastructure.Context.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     ConfigOrganizationId = table.Column<long>(type: "bigint", nullable: false),
                     RankId = table.Column<long>(type: "bigint", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -449,92 +487,17 @@ namespace Infrastructure.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Role",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CompanyId = table.Column<long>(type: "bigint", nullable: false),
-                    ParentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    MemberShipTypeId = table.Column<long>(type: "bigint", nullable: false),
-                    Parent = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RoleExpireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GKey = table.Column<long>(type: "bigint", nullable: false, defaultValueSql: "NEXT VALUE FOR Role_GKey"),
-                    AccessAll = table.Column<bool>(type: "bit", nullable: false),
-                    AccessAllEmploye = table.Column<bool>(type: "bit", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Role", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Role_Company_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Company",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Role_MemberShipType_MemberShipTypeId",
-                        column: x => x.MemberShipTypeId,
-                        principalTable: "MemberShipType",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Role_Role_ParentId",
-                        column: x => x.ParentId,
-                        principalTable: "Role",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MemberShipTypeId = table.Column<long>(type: "bigint", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_MemberShipType_MemberShipTypeId",
-                        column: x => x.MemberShipTypeId,
-                        principalTable: "MemberShipType",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RoleApiPermission",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<long>(type: "bigint", nullable: false),
                     ApiEndpointId = table.Column<long>(type: "bigint", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -554,27 +517,6 @@ namespace Infrastructure.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoleClaim",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoleClaim", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RoleClaim_Role_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Role",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RoleForm",
                 columns: table => new
                 {
@@ -582,10 +524,10 @@ namespace Infrastructure.Context.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     FormId = table.Column<long>(type: "bigint", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    RoleId = table.Column<long>(type: "bigint", nullable: false),
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreateUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -605,58 +547,15 @@ namespace Infrastructure.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserClaim",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserClaim", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserClaim_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserLogin",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserLogin", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_UserLogin_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserRole",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    RoleId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    RoleId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserRole", x => new { x.UserId, x.RoleId });
+                    table.PrimaryKey("PK_UserRole", x => new { x.RoleId, x.UserId });
                     table.ForeignKey(
                         name: "FK_UserRole_Role_RoleId",
                         column: x => x.RoleId,
@@ -664,41 +563,11 @@ namespace Infrastructure.Context.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_UserRole_Role_RoleId1",
-                        column: x => x.RoleId1,
-                        principalTable: "Role",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_UserRole_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_UserRole_User_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "User",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserToken",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserToken", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_UserToken_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -767,31 +636,14 @@ namespace Infrastructure.Context.Migrations
                 column: "LocationTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MemberShipType_CompanyId",
-                table: "MemberShipType",
-                column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Role_CompanyId",
                 table: "Role",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Role_MemberShipTypeId",
-                table: "Role",
-                column: "MemberShipTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Role_ParentId",
                 table: "Role",
                 column: "ParentId");
-
-            migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "Role",
-                column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleApiPermission_ApiEndpointId",
@@ -801,11 +653,6 @@ namespace Infrastructure.Context.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_RoleApiPermission_RoleId",
                 table: "RoleApiPermission",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoleClaim_RoleId",
-                table: "RoleClaim",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
@@ -819,46 +666,9 @@ namespace Infrastructure.Context.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "User",
-                column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_MemberShipTypeId",
-                table: "User",
-                column: "MemberShipTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "User",
-                column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserClaim_UserId",
-                table: "UserClaim",
+                name: "IX_UserRole_UserId",
+                table: "UserRole",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserLogin_UserId",
-                table: "UserLogin",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserRole_RoleId",
-                table: "UserRole",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserRole_RoleId1",
-                table: "UserRole",
-                column: "RoleId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserRole_UserId1",
-                table: "UserRole",
-                column: "UserId1");
         }
 
         /// <inheritdoc />
@@ -877,25 +687,13 @@ namespace Infrastructure.Context.Migrations
                 name: "RoleApiPermission");
 
             migrationBuilder.DropTable(
-                name: "RoleClaim");
-
-            migrationBuilder.DropTable(
                 name: "RoleForm");
 
             migrationBuilder.DropTable(
                 name: "SystemError");
 
             migrationBuilder.DropTable(
-                name: "UserClaim");
-
-            migrationBuilder.DropTable(
-                name: "UserLogin");
-
-            migrationBuilder.DropTable(
                 name: "UserRole");
-
-            migrationBuilder.DropTable(
-                name: "UserToken");
 
             migrationBuilder.DropTable(
                 name: "ConfigOrganization");
@@ -929,9 +727,6 @@ namespace Infrastructure.Context.Migrations
 
             migrationBuilder.DropTable(
                 name: "FormType");
-
-            migrationBuilder.DropTable(
-                name: "MemberShipType");
 
             migrationBuilder.DropTable(
                 name: "Company");

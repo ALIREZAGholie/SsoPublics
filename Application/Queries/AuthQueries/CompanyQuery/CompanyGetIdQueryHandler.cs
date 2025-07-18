@@ -25,7 +25,7 @@ namespace Application.Queries.AuthQueries.CompanyQuery
             {
                 var roleId = _authService.GetRoleId();
 
-                var role = await _roleRepository.RoleManager.Roles
+                var role = await _roleRepository.Table()
                     .Where(x => x.Id == roleId)
                     .Select(x => x.CompanyId)
                     .ToListAsync(cancellationToken);

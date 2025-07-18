@@ -2,8 +2,9 @@
 using Application.UseCases._SystemErrorCases;
 using Domain.RoleAgg.RoleEntity;
 using Domain.UserAgg.UserEntity;
-using Infrastructure.Context.CustomIdentity;
+using Infrastructure.Context.Contexts;
 using Infrastructure.Repository;
+using Infrastructure.Repository.Repositories.ClientStoreServices;
 using Microsoft.AspNetCore.Identity;
 using WebApi;
 using Webgostar.Framework.Application;
@@ -18,30 +19,22 @@ services.AddFrameworkApplication()
     .AddFrameworkPresentationWeb(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
-services.AddIdentity<User, Role>(o =>
+builder.Services.AddIdentityServer(o =>
     {
-        
+        o.Events.RaiseErrorEvents = true;
+        o.Events.RaiseInformationEvents = true;
+        o.Events.RaiseFailureEvents = true;
+        o.Events.RaiseSuccessEvents = true;
+
+        o.EmitStaticAudienceClaim = true;
     })
-    .AddUserStore<CustomUserStore>()
-    .AddRoleStore<CustomRoleStore>()
-    //.AddUserManager<UserRepository>()
-    //.AddRoleManager<RoleRepository>()
-    .AddDefaultTokenProviders();
-
-builder.Services.AddIdentityServer()
-    .AddAspNetIdentity<User>()
-    .AddInMemoryClients(Config.Clients)
+    .AddDeveloperSigningCredential(persistKey: true)
+    .AddProfileService<CustomProfileService>()
+    .AddResourceOwnerValidator<CustomResourceOwnerPasswordValidator>()
+    .AddInMemoryIdentityResources(Config.IdentityResources)
+    .AddInMemoryApiResources(Config.ApiResource)
     .AddInMemoryApiScopes(Config.ApiScopes)
-    //.AddInMemoryApiResources(Config.ApiResources)
-    //.AddInMemoryIdentityResources(Config.IdentityResources)
-    .AddDeveloperSigningCredential();
-
-//services.AddAuthorizationBuilder()
-//    .AddPolicy("ApiPermission", policy =>
-//    {
-//        policy.Requirements.Add(new ApiPermissionRequirement());
-//    });
-//services.AddSingleton<IAuthorizationHandler, ApiPermissionHandler>();
+    .AddInMemoryClients(Config.Clients);
 
 var app = builder.Build();
 

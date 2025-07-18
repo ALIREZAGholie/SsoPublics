@@ -32,7 +32,7 @@ namespace Application.Queries.OrganizationQueries.RankQuery
             try
             {
                 var roleId = _authService.GetRoleId();
-                var role = await _roleRepository.RoleManager.FindByIdAsync(roleId);
+                var role = await _roleRepository.GetByIdAsync(roleId, cancellationToken);
                 var companyId = role.CompanyId;
 
                 var model = await _organizationRankRepository.Table()

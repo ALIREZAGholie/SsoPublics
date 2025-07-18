@@ -48,11 +48,10 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long>("ApiEndpointTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayName")
@@ -66,7 +65,7 @@ namespace Infrastructure.Context.Migrations
                         .HasColumnType("bit")
                         .HasColumnOrder(1);
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Route")
@@ -89,11 +88,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("GKey")
@@ -109,7 +107,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -129,23 +127,21 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long>("ApiEndpointId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit")
                         .HasColumnOrder(1);
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -188,18 +184,17 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit")
                         .HasColumnOrder(1);
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -220,11 +215,10 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
@@ -249,7 +243,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -270,11 +264,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("FormId")
@@ -309,7 +302,7 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long?>("ParentId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -330,11 +323,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
@@ -345,7 +337,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -362,11 +354,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
@@ -377,7 +368,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
@@ -398,11 +389,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
@@ -423,7 +413,7 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long?>("ParentId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -442,11 +432,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("GKey")
@@ -462,7 +451,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -485,11 +474,10 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long>("ConfigOrganizationTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
@@ -502,7 +490,7 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long?>("PositionId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<long?>("SectionId")
@@ -535,18 +523,17 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long>("ConfigOrganizationId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit")
                         .HasColumnOrder(1);
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<long>("RankId")
@@ -570,11 +557,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("GKey")
@@ -590,7 +576,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -607,11 +593,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -630,7 +615,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -647,11 +632,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -670,7 +654,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -687,11 +671,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -710,7 +693,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -718,7 +701,7 @@ namespace Infrastructure.Context.Migrations
                     b.ToTable("Section");
                 });
 
-            modelBuilder.Entity("Domain.RoleAgg.MemberShipTypeEntity.MemberShipType", b =>
+            modelBuilder.Entity("Domain.RoleAgg.RoleEntity.Role", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -726,39 +709,6 @@ namespace Infrastructure.Context.Migrations
                         .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("CompanyId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit")
-                        .HasColumnOrder(1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PublicId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("MemberShipType");
-                });
-
-            modelBuilder.Entity("Domain.RoleAgg.RoleEntity.Role", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("AccessAll")
                         .HasColumnType("bit");
@@ -769,75 +719,48 @@ namespace Infrastructure.Context.Migrations
                     b.Property<long>("CompanyId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<long>("GKey")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasDefaultValueSql("NEXT VALUE FOR Role_GKey");
 
-                    b.Property<long>("MemberShipTypeId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit")
+                        .HasColumnOrder(1);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Parent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ParentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("RoleExpireDate")
+                    b.Property<Guid?>("PublicId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("RoleExpireDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("MemberShipTypeId");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Role", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.RoleAgg.RoleEntity.RoleClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("RoleClaim", (string)null);
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("Domain.RoleAgg.RoleFormEntity.RoleForm", b =>
@@ -849,11 +772,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("FormId")
@@ -863,12 +785,11 @@ namespace Infrastructure.Context.Migrations
                         .HasColumnType("bit")
                         .HasColumnOrder(1);
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -881,22 +802,21 @@ namespace Infrastructure.Context.Migrations
 
             modelBuilder.Entity("Domain.UserAgg.UserEntity.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnOrder(0);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -906,6 +826,13 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit")
+                        .HasColumnOrder(1);
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -913,143 +840,38 @@ namespace Infrastructure.Context.Migrations
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("MemberShipTypeId")
+                    b.Property<long?>("LockoutEnd")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                    b.Property<Guid?>("PublicId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MemberShipTypeId");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("User", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.UserClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserClaim", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.UserLogin", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserLogin", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.UserToken", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("UserToken", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserRoleEntity.UserRole", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("RoleId1")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("RoleId", "UserId");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasIndex("UserId");
 
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId1");
-
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("UserRole", (string)null);
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("Webgostar.Framework.Base.BaseModels.SystemError", b =>
@@ -1061,11 +883,10 @@ namespace Infrastructure.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("CreateUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CreateUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Data")
@@ -1090,7 +911,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PublicId")
+                    b.Property<Guid?>("PublicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -1229,28 +1050,11 @@ namespace Infrastructure.Context.Migrations
                     b.Navigation("Rank");
                 });
 
-            modelBuilder.Entity("Domain.RoleAgg.MemberShipTypeEntity.MemberShipType", b =>
-                {
-                    b.HasOne("Domain.CompanyAgg.CompanyEntity.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("Domain.RoleAgg.RoleEntity.Role", b =>
                 {
                     b.HasOne("Domain.CompanyAgg.CompanyEntity.Company", "Company")
                         .WithMany("Roles")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Domain.RoleAgg.MemberShipTypeEntity.MemberShipType", "MemberShipType")
-                        .WithMany()
-                        .HasForeignKey("MemberShipTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1261,18 +1065,7 @@ namespace Infrastructure.Context.Migrations
 
                     b.Navigation("Company");
 
-                    b.Navigation("MemberShipType");
-
                     b.Navigation("ParentRole");
-                });
-
-            modelBuilder.Entity("Domain.RoleAgg.RoleEntity.RoleClaim", b =>
-                {
-                    b.HasOne("Domain.RoleAgg.RoleEntity.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.RoleAgg.RoleFormEntity.RoleForm", b =>
@@ -1284,7 +1077,7 @@ namespace Infrastructure.Context.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.RoleAgg.RoleEntity.Role", "Role")
-                        .WithMany()
+                        .WithMany("RoleForms")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1292,41 +1085,6 @@ namespace Infrastructure.Context.Migrations
                     b.Navigation("Form");
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.User", b =>
-                {
-                    b.HasOne("Domain.RoleAgg.MemberShipTypeEntity.MemberShipType", null)
-                        .WithMany("Users")
-                        .HasForeignKey("MemberShipTypeId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.UserClaim", b =>
-                {
-                    b.HasOne("Domain.UserAgg.UserEntity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.UserLogin", b =>
-                {
-                    b.HasOne("Domain.UserAgg.UserEntity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.UserToken", b =>
-                {
-                    b.HasOne("Domain.UserAgg.UserEntity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.UserAgg.UserRoleEntity.UserRole", b =>
@@ -1337,23 +1095,11 @@ namespace Infrastructure.Context.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Domain.RoleAgg.RoleEntity.Role", "Role")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("RoleId1");
-
                     b.HasOne("Domain.UserAgg.UserEntity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("Domain.UserAgg.UserEntity.User", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("Role");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.ApiEndpointAgg.ApiEndpointEntity.ApiEndpoint", b =>
@@ -1419,21 +1165,11 @@ namespace Infrastructure.Context.Migrations
                     b.Navigation("ConfigOrganizations");
                 });
 
-            modelBuilder.Entity("Domain.RoleAgg.MemberShipTypeEntity.MemberShipType", b =>
-                {
-                    b.Navigation("Users");
-                });
-
             modelBuilder.Entity("Domain.RoleAgg.RoleEntity.Role", b =>
                 {
+                    b.Navigation("RoleForms");
+
                     b.Navigation("SubRoles");
-
-                    b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("Domain.UserAgg.UserEntity.User", b =>
-                {
-                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,9 +8,9 @@ namespace Application.UseCases.AuthCases.RoleCase.Edit
 {
     public class RoleEditCommand : ICommand<bool>
     {
-        public string Id { get; set; }
-        public string ParentId { get; set; }
-        public long UnitId { get; set; }
+        public long Id { get; set; }
+        public long ParentId { get; set; }
+        public long CompanyId { get; set; }
         public string Name { get; set; }
         public bool AccessAll { get; set; }
         public bool AccessAllEmploye { get; set; }
@@ -24,12 +24,10 @@ namespace Application.UseCases.AuthCases.RoleCase.Edit
         {
             RuleFor(x => x.ParentId)
                 .NotNull().WithMessage("نقش پایه را انتخاب کنید");
-            RuleFor(x => x.UnitId)
-                .NotNull().WithMessage("واحد نقش را انخاب کنید");
+            RuleFor(x => x.CompanyId)
+                .NotNull().WithMessage("شرکت نقش را انخاب کنید");
             RuleFor(x => x.Name)
                 .NotNull().WithMessage("نام نقش را وارد کنید");
-            RuleFor(x => x.RoleExpireDate)
-                .NotNull().WithMessage("تاریخ انقضا نقش را وارد کنید");
             RuleFor(x => x.MemberShipTypeId)
                 .NotNull().WithMessage("نوع عضوبت را انتخاب کنید")
                 .NotEqual(0).WithMessage("نوع عضوبت را انتخاب کنید")
@@ -54,15 +52,16 @@ namespace Application.UseCases.AuthCases.RoleCase.Edit
             {
                 await _unitOfWork.BeginTransactionAsync(cancellationToken);
 
-                Role? role = await _repository.RoleManager.FindByIdAsync(request.Id);
+                Role? role = await _repository.GetByIdAsync(request.Id, cancellationToken);
 
-                role?.Edit(request.Name, request.ParentId, request.UnitId, request.AccessAll,
-                    request.AccessAllEmploye, request.MemberShipTypeId, request.RoleExpireDate);
+                role?.Edit(request.Name, request.ParentId, request.CompanyId, request.AccessAll,
+                    request.AccessAllEmploye, request.RoleExpireDate);
+
                 _ = await _unitOfWork.SaveChangesAsync(cancellationToken);
 
                 var parents = await _repository.GetParents(request.ParentId, role.Id);
                 role.SetParents(parents);
-                await _repository.RoleManager.UpdateAsync(role);
+                await _repository.Update(role);
 
                 await _unitOfWork.CommitTransactionAsync(cancellationToken);
                 return OperationResult<bool>.Success(true);

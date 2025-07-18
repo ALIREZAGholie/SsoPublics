@@ -7,7 +7,7 @@ namespace Domain.RoleAgg.RoleFormEntity
     public class RoleForm : AggregateRoot
     {
         public long FormId { get; set; }
-        public string RoleId { get; set; }
+        public long RoleId { get; set; }
 
 
         [ForeignKey(nameof(RoleId))]
